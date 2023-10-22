@@ -1,6 +1,7 @@
 const {google} = require('googleapis');
+require('dotenv').config();
 
-API_KEY = 'AIzaSyDZZ_33B_icDthSy7oj7rQUbwu3XUfs--s';
+API_KEY = process.env.PERSPECTIVE_API_KEY;
 DISCOVERY_URL =
     'https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1';
 
@@ -8,7 +9,7 @@ google.discoverAPI(DISCOVERY_URL)
     .then(client => {
       const analyzeRequest = {
         comment: {
-          text: 'Suck my ass cocksucker',
+          text: 'Die you shit',
         },
         requestedAttributes: {
           TOXICITY: {},

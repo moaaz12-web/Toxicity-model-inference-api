@@ -3,6 +3,7 @@ const fs = require("fs");
 const XLSX = require("xlsx");
 const { google } = require("googleapis");
 const { SageMakerRuntime } = require("@aws-sdk/client-sagemaker-runtime");
+require("dotenv").config();
 
 // Function to read and parse the XLSX file
 function readAndParseXlsx(filePath) {
@@ -28,8 +29,8 @@ async function sagemakerModel(data) {
   const smRuntime = new SageMakerRuntime({
     region: "us-east-1",
     credentials: {
-      accessKeyId: "AKIAX2Y74JWRFSIGW2VA",
-      secretAccessKey: "j7ya/F07zb1z9v3B7btQidmH5kBXqVH02xq7IxsD",
+      accessKeyId: process.env.accessKeyId,
+      secretAccessKey: process.env.secretAccessKey,
     },
   }); // Replace with your desired region
 
@@ -81,7 +82,7 @@ async function sagemakerModel(data) {
 
 //////////////////!
 
-API_KEY = "AIzaSyDZZ_33B_icDthSy7oj7rQUbwu3XUfs--s";
+API_KEY = process.env.PERSPECTIVE_API_KEY;
 DISCOVERY_URL =
   "https://commentanalyzer.googleapis.com/$discovery/rest?version=v1alpha1";
 
